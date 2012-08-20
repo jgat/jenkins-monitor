@@ -1,3 +1,15 @@
+#!/usr/bin/env python
+"""
+A simple app to monitor Jenkins builds.
+
+Usage:
+    ./monitor.py url [port]
+
+    url - the URL to the Jenkins job.
+    port - the port to run the webserver on. Defaults to 8080
+
+"""
+
 import sys
 from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
 
@@ -42,5 +54,5 @@ def display(reports, template="display.html"):
 
 if __name__ == '__main__':
     base_url = sys.argv[1]
-    port = int(sys.argv[2])
+    port = int(sys.argv[2]) if sys.argv[2:] else 8080
     HTTPServer(('', port), Handler).serve_forever()

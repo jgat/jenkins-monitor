@@ -1,0 +1,23 @@
+<html>
+    <head>
+    <meta http-equiv="refresh" content="60">
+        <title>{{ fullDisplayName }}</title>
+        <style>
+            body {
+                background: {% if result == 'SUCCESS' %}lime{% else %}red{% endif %};
+                font-family: "kulturista-web",Helvetica,Arial,Verdana,sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Latest build result - {{ fullDisplayName }}:</p>
+        <h1 style="font-size:70;margin-left:auto;
+        margin-right:auto;
+        width:70%;
+        ">{{ result }}</h1>
+        <p>Commits made by:</p>
+        <ul>{% for culprit in culprits %}
+        <li>{{ culprit.fullName }}</li>
+        {% endfor %}</ul>
+    </body>
+</html>

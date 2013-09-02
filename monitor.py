@@ -32,7 +32,7 @@ class Handler(BaseHTTPRequestHandler):
 def get(url):
     r = requests.get(url + '/api/json')
     if r.ok:
-        return r.json
+        return r.json()
     else:
         raise IOError("HTTP Error {0}: {1} ({2})".format(r.status_code,
                 r.reason, r.url))
